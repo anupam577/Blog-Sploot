@@ -13,7 +13,7 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     checkUserLoggedIn();
-  }, []);
+  }, [isuserAuthenticated]);
 
   // check if the user is logged in.
   const checkUserLoggedIn = async () => {
