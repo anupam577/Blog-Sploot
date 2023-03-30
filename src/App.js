@@ -1,24 +1,38 @@
-import logo from './logo.svg';
+
 import './App.css';
 
+import Home from './Pages/Home';
+
+import { useState } from 'react';
+
+import { Box } from '@mui/material';
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { AuthContextProvider } from './context/authcontext';
+
+import BlogPage from './Pages/BlogPage';
+import About from './components/about/about';
+import Contact from './components/contact/contact';
 function App() {
+
+  const [isAuthenticated, isUserAuthenticated] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <BrowserRouter>
+      <AuthContextProvider>
+        <Box style={{ marginTop: 64 }}>
+
+          <Routes>
+            
+            <Route path="/" element={<Home />} />
+            <Route path="/blogs" element={<BlogPage />} />
+            <Route path="/about" element={<About/>}/>
+            <Route path="/contact" element={<Contact/>}/>
+
+          </Routes>
+        </Box>
+      </AuthContextProvider>
+    </BrowserRouter>
   );
 }
 
