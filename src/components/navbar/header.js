@@ -31,6 +31,7 @@ const Header = () => {
     const{user,setuser}=useContext(AuthContext)
     const logout =()=>{
         localStorage.clear();
+        
     }
     return (
         
